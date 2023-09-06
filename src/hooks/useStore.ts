@@ -53,7 +53,7 @@ function reducer(state: State, action: ActionTypes): State {
 export function useStore() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const intercahngeLanguages = () => {
+  const interchangeLanguages = () => {
     dispatch({ type: 'INTERCHANGE_LANGUAGES' })
   }
 
@@ -71,7 +71,7 @@ export function useStore() {
 
   return {
     ...state,
-    intercahngeLanguages,
+    interchangeLanguages,
     setFromLanguage,
     setToLanguage,
     setFromText
