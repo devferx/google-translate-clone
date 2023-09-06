@@ -15,6 +15,7 @@ function App() {
       >
         Cambiar a Español
       </button>
+      <p>From Language: {fromLanguage}</p>
     </div>
   )
 }
