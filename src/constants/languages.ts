@@ -1,10 +1,10 @@
 export const SUPPORTED_LANGUAGES = {
-  en: 'English',
-  es: 'Spanish',
-  fr: 'French',
-  de: 'German',
-  it: 'Italian',
-  pt: 'Portuguese'
+  eng_Latn: 'English',
+  spa_Latn: 'Spanish',
+  fra_Latn: 'French',
+  zho_Hant: 'Chinese (Traditional)',
+  ita_Latn: 'Italian',
+  German: 'deu_Latn'
 }
 
 export const AUTO_LANGUAGE = 'auto'
