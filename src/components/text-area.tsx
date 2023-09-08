@@ -44,6 +44,7 @@ export const TextArea = ({
     <Form.Control
       autoFocus={type === SectionType.From}
       as='textarea'
+      readOnly={type === SectionType.To}
       placeholder={getPlaceholder({ type, isLoading })}
       style={styles}
       value={value}
