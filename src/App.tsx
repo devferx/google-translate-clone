@@ -1,5 +1,7 @@
 import { useStore } from './hooks/useStore'
-import { Button, Col, Container, Row } from 'react-bootstrap'
+import { Button, Col, Container, Form, Row, Stack } from 'react-bootstrap'
+
+import { SectionType } from './hooks/useStore.types'
 
 import { InterchangeIcon } from './components/icons'
 import { LanguageSelector } from './components/laguage-selector'
@@ -19,14 +21,23 @@ function App() {
 
   return (
     <Container fluid>
-      <h1>Google Translate</h1>
+      <h2>Google Translate</h2>
+
       <Row>
-        <Col>
-          <LanguageSelector
-            type='from'
-            value={fromLanguage}
-            onChange={setFromLanguage}
-          />
+        <Col xs='auto'>
+          <Stack gap={2}>
+            <LanguageSelector
+              type={SectionType.From}
+              value={fromLanguage}
+              onChange={setFromLanguage}
+            />
+            <Form.Control
+              as='textarea'
+              placeholder='Introducir texto'
+              autoFocus
+              style={{ height: '150px' }}
+            />
+          </Stack>
         </Col>
         <Col>
           <Button
@@ -37,12 +48,19 @@ function App() {
             <InterchangeIcon height={24} width={24} />
           </Button>
         </Col>
-        <Col>
-          <LanguageSelector
-            type='to'
-            value={toLanguage}
-            onChange={setToLanguage}
-          />
+        <Col xs='auto'>
+          <Stack gap={2}>
+            <LanguageSelector
+              type={SectionType.To}
+              value={toLanguage}
+              onChange={setToLanguage}
+            />
+            <Form.Control
+              as='textarea'
+              placeholder='Traducción'
+              style={{ height: '150px' }}
+            />
+          </Stack>
         </Col>
       </Row>
     </Container>
