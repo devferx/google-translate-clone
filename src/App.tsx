@@ -1,10 +1,11 @@
 import { useStore } from './hooks/useStore'
-import { Button, Col, Container, Form, Row, Stack } from 'react-bootstrap'
+import { Button, Col, Container, Row, Stack } from 'react-bootstrap'
 
 import { SectionType } from './hooks/useStore.types'
 
 import { InterchangeIcon } from './components/icons'
 import { LanguageSelector } from './components/laguage-selector'
+import { TextArea } from './components/text-area'
 
 import { AUTO_LANGUAGE } from './constants'
 
@@ -14,9 +15,14 @@ function App() {
   const {
     fromLanguage,
     toLanguage,
+    fromText,
+    result,
+    isLoading,
     interchangeLanguages,
     setFromLanguage,
-    setToLanguage
+    setToLanguage,
+    setFromText,
+    setResult
   } = useStore()
 
   return (
@@ -31,11 +37,11 @@ function App() {
               value={fromLanguage}
               onChange={setFromLanguage}
             />
-            <Form.Control
-              as='textarea'
-              placeholder='Introducir texto'
-              autoFocus
-              style={{ height: '150px' }}
+
+            <TextArea
+              type={SectionType.From}
+              value={fromText}
+              onChange={setFromText}
             />
           </Stack>
         </Col>
@@ -55,10 +61,11 @@ function App() {
               value={toLanguage}
               onChange={setToLanguage}
             />
-            <Form.Control
-              as='textarea'
-              placeholder='Traducción'
-              style={{ height: '150px' }}
+            <TextArea
+              type={SectionType.To}
+              value={result}
+              isLoading={isLoading}
+              onChange={setResult}
             />
           </Stack>
         </Col>
