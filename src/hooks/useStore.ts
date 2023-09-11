@@ -23,6 +23,8 @@ function reducer(state: State, action: ActionTypes): State {
 
       return {
         ...state,
+        isLoading: state.fromText !== '',
+        result: '',
         fromLanguage: state.toLanguage,
         toLanguage: state.fromLanguage
       }
