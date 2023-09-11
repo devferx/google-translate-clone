@@ -12,6 +12,7 @@ import { AUTO_LANGUAGE } from './constants'
 import './App.css'
 import { useEffect } from 'react'
 import { translate } from './services/translate'
+import { useDebounce } from './hooks/useDebounce'
 
 function App() {
   const {
@@ -27,9 +28,11 @@ function App() {
     setResult
   } = useStore()
 
+  const debouncedFromText = useDebounce(fromText)
+
   useEffect(() => {
-    if (fromText.trim() === '') return
-    translate({ fromLanguage, toLanguage, text: fromText })
+    if (debouncedFromText.trim() === '') return
+    translate({ fromLanguage, toLanguage, text: debouncedFromText })
       .then((result) => {
         if (result === null) return
         setResult(result)
@@ -37,7 +40,7 @@ function App() {
       .catch(() => {
         setResult('Error')
       })
-  }, [fromText, fromLanguage, toLanguage])
+  }, [debouncedFromText, fromLanguage, toLanguage])
 
   return (
     <Container fluid>
