@@ -3,11 +3,11 @@ import { Button, Col, Container, Row, Stack } from 'react-bootstrap'
 
 import { SectionType } from './hooks/useStore.types'
 
-import { InterchangeIcon, ClipboardIcon } from './components/icons'
+import { InterchangeIcon, ClipboardIcon, SpeakerIcon } from './components/icons'
 import { LanguageSelector } from './components/laguage-selector'
 import { TextArea } from './components/text-area'
 
-import { AUTO_LANGUAGE } from './constants'
+import { AUTO_LANGUAGE, VOICE_FOR_LANGUAGES } from './constants'
 
 import './App.css'
 import { useEffect } from 'react'
@@ -44,6 +44,13 @@ function App() {
 
   const handleClipboard = () => {
     navigator.clipboard.writeText(result).catch(() => {})
+  }
+
+  const handleSpeak = () => {
+    const utterance = new SpeechSynthesisUtterance(result)
+    utterance.lang = VOICE_FOR_LANGUAGES[toLanguage]
+    utterance.rate = 0.9
+    speechSynthesis.speak(utterance)
   }
 
   return (
@@ -90,17 +97,21 @@ function App() {
                 onChange={setResult}
               />
 
-              <Button
-                variant='link'
+              <div
                 style={{
                   position: 'absolute',
-                  right: 0,
-                  bottom: 0
+                  left: 0,
+                  bottom: 0,
+                  display: 'flex'
                 }}
-                onClick={handleClipboard}
               >
-                <ClipboardIcon />
-              </Button>
+                <Button variant='link' onClick={handleClipboard}>
+                  <ClipboardIcon />
+                </Button>
+                <Button variant='link' onClick={handleSpeak}>
+                  <SpeakerIcon />
+                </Button>
+              </div>
             </div>
           </Stack>
         </Col>
