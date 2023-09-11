@@ -1,2 +1,2 @@
-export * from './Clipboard'
+export * from './clipboard'
 export * from './interchange'
