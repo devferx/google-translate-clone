@@ -10,6 +10,8 @@ import { TextArea } from './components/text-area'
 import { AUTO_LANGUAGE } from './constants'
 
 import './App.css'
+import { useEffect } from 'react'
+import { translate } from './services/translate'
 
 function App() {
   const {
@@ -24,6 +26,18 @@ function App() {
     setFromText,
     setResult
   } = useStore()
+
+  useEffect(() => {
+    if (fromText.trim() === '') return
+    translate({ fromLanguage, toLanguage, text: fromText })
+      .then((result) => {
+        if (result === null) return
+        setResult(result)
+      })
+      .catch(() => {
+        setResult('Error')
+      })
+  }, [fromText, fromLanguage, toLanguage])
 
   return (
     <Container fluid>

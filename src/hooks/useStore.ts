@@ -27,14 +27,22 @@ function reducer(state: State, action: ActionTypes): State {
         toLanguage: state.fromLanguage
       }
     case 'SET_FROM_LANGUAGE':
+      if (state.fromLanguage === action.payload) return state
+
       return {
         ...state,
-        fromLanguage: action.payload
+        fromLanguage: action.payload,
+        result: '',
+        isLoading: state.fromText !== ''
       }
     case 'SET_TO_LANGUAGE':
+      if (state.fromLanguage === action.payload) return state
+
       return {
         ...state,
-        toLanguage: action.payload
+        toLanguage: action.payload,
+        result: '',
+        isLoading: state.fromText !== ''
       }
     case 'SET_FROM_TEXT':
       return {
