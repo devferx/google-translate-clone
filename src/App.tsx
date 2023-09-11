@@ -3,7 +3,7 @@ import { Button, Col, Container, Row, Stack } from 'react-bootstrap'
 
 import { SectionType } from './hooks/useStore.types'
 
-import { InterchangeIcon } from './components/icons'
+import { InterchangeIcon, ClipboardIcon } from './components/icons'
 import { LanguageSelector } from './components/laguage-selector'
 import { TextArea } from './components/text-area'
 
@@ -42,6 +42,10 @@ function App() {
       })
   }, [debouncedFromText, fromLanguage, toLanguage])
 
+  const handleClipboard = () => {
+    navigator.clipboard.writeText(result).catch(() => {})
+  }
+
   return (
     <Container fluid>
       <h2>Google Translate</h2>
@@ -78,12 +82,26 @@ function App() {
               value={toLanguage}
               onChange={setToLanguage}
             />
-            <TextArea
-              type={SectionType.To}
-              value={result}
-              isLoading={isLoading}
-              onChange={setResult}
-            />
+            <div style={{ position: 'relative' }}>
+              <TextArea
+                type={SectionType.To}
+                value={result}
+                isLoading={isLoading}
+                onChange={setResult}
+              />
+
+              <Button
+                variant='link'
+                style={{
+                  position: 'absolute',
+                  right: 0,
+                  bottom: 0
+                }}
+                onClick={handleClipboard}
+              >
+                <ClipboardIcon />
+              </Button>
+            </div>
           </Stack>
         </Col>
       </Row>
