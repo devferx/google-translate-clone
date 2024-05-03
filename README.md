@@ -1,27 +1,58 @@
-# React + TypeScript + Vite
+<h1 align="center">Welcome to google-translate-clone 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/devferx" target="_blank">
+    <img alt="Twitter: devferx" src="https://img.shields.io/twitter/follow/devferx.svg?style=social" />
+  </a>
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="https://i.ibb.co/vHbPRKy/455shots-so.png" alt="455shots-so" border="0">
 
-Currently, two official plugins are available:
+> A web-based translation application built with React.js and Bootstrap, inspired by Google Translate.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This user-friendly app allows you to translate text between multiple languages. It features:
 
-## Expanding the ESLint configuration
+- **Text input and output fields**: Simply paste your text or type directly, and the translation will appear in the designated field.
+- **Automatic source language detection**: Save time by letting the app identify the original language for you.
+- **Powered by the Gemini model**: This advanced technology can potentially deliver high-quality translations.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 🏠 [Homepage](https://google-translate-clone-zeta.vercel.app/)
 
-- Configure the top-level `parserOptions` property like this:
+### ✨ [Demo](https://google-translate-clone-zeta.vercel.app/)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## Install
+
+```sh
+pnpm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+```sh
+pnpm run dev
+```
+
+## Run tests
+
+```sh
+pnpm run test
+```
+
+## Author
+
+👤 **Fernando Quinteros Gutierrez**
+
+- Twitter: [@devferx](https://twitter.com/devferx)
+- Github: [@devferx](https://github.com/devferx)
+- LinkedIn: [@devferx](https://linkedin.com/in/devferx)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/devferx/google-translate-clone/issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
