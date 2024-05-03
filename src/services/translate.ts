@@ -1,9 +1,12 @@
-import NLPCloudClient from 'nlpcloud'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 
 import { type Langugage, type FromLanguage } from '../hooks/useStore.types'
 
-const apiKey = import.meta.env.VITE_NLP_API_KEY
-const client = new NLPCloudClient('nllb-200-3-3b', apiKey, false)
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY
+const genAI = new GoogleGenerativeAI(apiKey)
+const model = genAI.getGenerativeModel({
+  model: 'gemini-pro'
+})
 
 interface TranslateParams {
   fromLanguage: FromLanguage
@@ -11,25 +14,19 @@ interface TranslateParams {
   text: string
 }
 
-export interface NPLCloudTranslateResponse {
-  translation_text: string
-}
-
 export async function translate({
   fromLanguage,
   toLanguage,
   text
-}: TranslateParams) {
+}: TranslateParams): Promise<string> {
   if (fromLanguage === toLanguage) return text
 
-  try {
-    const res = await client.translation(
-      text,
-      fromLanguage !== 'auto' ? fromLanguage : '',
-      toLanguage
-    )
+  const prompt = `Translate the following text from ${fromLanguage} to ${toLanguage}:\n\n${text}\n\nTranslation:`
 
-    return res.data.translation_text
+  try {
+    const { response } = await model.generateContent(prompt)
+
+    return response.text()
   } catch (error) {
     console.error(error)
     return 'Error'
