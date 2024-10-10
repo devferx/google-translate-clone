@@ -1,18 +1,19 @@
-import { useStore } from './hooks/useStore'
+import { useEffect } from 'react'
 import { Button, Col, Container, Row, Stack } from 'react-bootstrap'
 
+import { translate } from './services/translate'
+
+import { useDebounce } from './hooks/useDebounce'
+import { useStore } from './hooks/useStore'
 import { SectionType } from './hooks/useStore.types'
 
-import { InterchangeIcon, ClipboardIcon, SpeakerIcon } from './components/icons'
+import { ClipboardIcon, InterchangeIcon, SpeakerIcon } from './components/icons'
 import { LanguageSelector } from './components/laguage-selector'
 import { TextArea } from './components/text-area'
 
 import { AUTO_LANGUAGE, VOICE_FOR_LANGUAGES } from './constants'
 
 import './App.css'
-import { useEffect } from 'react'
-import { translate } from './services/translate'
-import { useDebounce } from './hooks/useDebounce'
 
 function App() {
   const {
